@@ -1,5 +1,7 @@
 import tweepy
 import sys
+import configparser
+
 
 class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
@@ -8,7 +10,7 @@ class StreamListener(tweepy.StreamListener):
         is_retweet = hasattr(status, "retweeted_status")
 
         # check if text has been truncated
-        if hasattr(status,"extended_tweet"):
+        if hasattr(status, "extended_tweet"):
             text = status.extended_tweet["full_text"]
         else:
             text = status.text
@@ -18,23 +20,27 @@ class StreamListener(tweepy.StreamListener):
         quoted_text = ""
         if is_quote:
             # check if quoted tweet's text has been truncated before recording it
-            if hasattr(status.quoted_status,"extended_tweet"):
+            if hasattr(status.quoted_status, "extended_tweet"):
                 quoted_text = status.quoted_status.extended_tweet["full_text"]
             else:
                 quoted_text = status.quoted_status.text
 
-        print(status.created_at, status.favorite_count, status.retweet_count, 
-             status.text, status.id, status.geo, status.lang, status.source, status.entities.get('hashtags'))
+        print(status.created_at, status.favorite_count, status.retweet_count,
+              status.text, status.id, status.geo, status.lang, status.source, status.entities.get('hashtags'))
         print('------------------------------------------')
 
     def on_error(self, status_code):
         print("Encountered streaming error (", status_code, ")")
         sys.exit()
 
-ACCESS_TOKEN = '378933214-lF13qrhZtbXAXffoEF9WoDlp2JA709UqmXepHqSn'
-ACCESS_TOKEN_SECRET = 'GPSVwNxol2YI1Oml1S7NGEkmD13zep4AGNObdhrBfw8gV'
-API_KEY = 'gulk3K6vdFUw0XumlPhrUoPWI'
-API_TOKEN = 'Go2chQVwPn2si2rB99FjqJy7dloC01cYtwbWcGzxgN5UBA2xFT'
+
+config = configparser.ConfigParser()
+config.read('./twitter.ini')
+
+ACCESS_TOKEN = config.get('twitter', 'ACCESS_TOKEN')
+ACCESS_TOKEN_SECRET = config.get('twitter', 'ACCESS_TOKEN_SECRET')
+API_KEY = config.get('twitter', 'API_KEY')
+API_TOKEN = config.get('twitter', 'API_TOKEN')
 
 auth = tweepy.OAuthHandler(API_KEY, API_TOKEN)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
