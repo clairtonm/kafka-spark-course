@@ -94,5 +94,9 @@ venv.bak/
 # idea
 .idea/
 
+# vscode
+
+.vscode/
+
 # Config File
 *.ini

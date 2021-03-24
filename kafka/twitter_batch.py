@@ -15,6 +15,7 @@ auth = tweepy.OAuthHandler(API_KEY, API_TOKEN)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
+#procurar por covid, tweets que não foram replies ou retweets
 search = "covid -filter:replies -filter:retweets"
 
 results = tweepy.Cursor(api.search, q=search, since="2020-03-10",  result_type="mixed").items(1000)
