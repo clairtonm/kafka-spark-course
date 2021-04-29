@@ -14,9 +14,10 @@ Based on docker files of oficial repos of Elastic and Apache Superset
 To run the container, simply run:
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 ## Links
 
 - **Apache Superset:** [http://localhost:8088](http://localhost:8088)
 - **Elasticsearch:** [http://localhost:9200](http://localhost:9200)
+- **Kibana:** [http://localhost:5601](http://localhost:5601)
