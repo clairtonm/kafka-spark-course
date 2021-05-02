@@ -12,7 +12,7 @@ ssc = StreamingContext(sc, 1)
 
 sc.setLogLevel("WARN")
 
-directKafkaStream = KafkaUtils.createDirectStream(ssc, ["test-topic"], {"metadata.broker.list": "localhost:9092", "zookeeper.connection.timeout.ms": "10000"})
+directKafkaStream = KafkaUtils.createDirectStream(ssc, ["twitter"], {"metadata.broker.list": "localhost:9092", "zookeeper.connection.timeout.ms": "10000"})
 
 directKafkaStream.pprint()
 
