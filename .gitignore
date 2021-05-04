@@ -100,3 +100,5 @@ venv.bak/
 
 # Config File
 *.ini
+
+data/checkpoint
