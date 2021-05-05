@@ -1,6 +1,8 @@
 ## Starting the Kafka 
 
-kafka version: kafka_2.11-2.4.0
+kafka version        : kafka_2.11-2.4.0
+java version         : 1.8
+apache spark version : 2.4.7 hadoop 2.7
 
 1. Start Zookeeper
  
