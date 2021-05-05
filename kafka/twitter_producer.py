@@ -12,7 +12,7 @@ try:
     for tweet in data:
         producer.send('twitter', key=b'covid', value=tweet)
         print('Sent:', tweet)
-        time.sleep(0.5)
+        time.sleep(0.1)
 except KafkaTimeoutError:
     print("Timeout: not possible to send the data.")
 finally:

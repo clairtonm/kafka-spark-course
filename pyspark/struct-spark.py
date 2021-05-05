@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
-from pyspark.streaming.kafka import KafkaUtils
+# from pyspark.streaming.kafka import KafkaUtils
 from pyspark.sql.types import *
 import json
 import sys
@@ -19,7 +19,7 @@ jsonSchema = StructType([StructField("created_at", DoubleType(), True), StructFi
                         StructField("geo", StructType([StructField("type", StringType(), True), StructField("coordinates", ArrayType(LongType(), True))]), True), 
                         StructField("lang", StringType(), True)])
 
-df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)").withColumn("json", from_json(col('value').cast("string"), jsonSchema)).select(col("json.*")).writeStream.outputMode("update").format("console").option("truncate", "false").start()
+query =df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)").withColumn("json", from_json(col('value').cast("string"), jsonSchema)).select(col("json.*")).writeStream.outputMode("update").format("console").option("truncate", "false").start()
 
 # df.withColumn("json", from_json(col('value').cast("string"), jsonSchema))
 
