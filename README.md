@@ -1,6 +1,6 @@
 # Getting Started
 
-Elasticsearch + Apache Superset on Docker.
+Apache Kafka + Elastic Stack + Apache Superset on Docker.
 
 Based on docker files of oficial repos of Elastic and Apache Superset
 
@@ -16,6 +16,9 @@ To run the container, simply run:
 ```bash
 docker-compose up -d
 ```
+
+In manual_ingestion directory there are the notebook to get the data from tweets.json and ingest on Kafka or directly on Elasticsearch. Logstash will running using the configuration on logstash/logstash.conf and will connect on kafka topic to ingest on Elasticsearch as well.
+
 ## Links
 
 - **Apache Superset:** [http://localhost:8088](http://localhost:8088)

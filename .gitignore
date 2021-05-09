@@ -1,3 +1,4 @@
 .vscode/
+.files_gitignore
 manual_ingestion/.ipynb_checkpoints
 manual_ingestion/venv
