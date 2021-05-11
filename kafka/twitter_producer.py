@@ -3,6 +3,9 @@ import json
 import time
 from kafka.errors import KafkaTimeoutError
 
+# Exercício
+# Enviar tweets para tópico twitter com a key covid
+
 
 with open("../data/tweets.json") as jsonFile:
     data = json.load(jsonFile)

@@ -1,6 +1,6 @@
 from kafka import KafkaConsumer
 
-consumer = KafkaConsumer('test-topic')
+consumer = KafkaConsumer('log')
 
 for msg in consumer:
     print(msg)
