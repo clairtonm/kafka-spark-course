@@ -24,3 +24,9 @@ In manual_ingestion directory there are the notebook to get the data from tweets
 - **Apache Superset:** [http://localhost:8088](http://localhost:8088)
 - **Elasticsearch:** [http://localhost:9200](http://localhost:9200)
 - **Kibana:** [http://localhost:5601](http://localhost:5601)
+
+## Create Env
+
+`conda create --name myenv`
+
+Jupyter and PySpark: https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes
