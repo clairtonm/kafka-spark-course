@@ -1,6 +1,9 @@
 import tweepy
 import sys
 import configparser
+import time
+from kafka import KafkaProducer
+from kafka.errors import KafkaTimeoutError
 
 
 class StreamListener(tweepy.StreamListener):
@@ -25,9 +28,21 @@ class StreamListener(tweepy.StreamListener):
             else:
                 quoted_text = status.quoted_status.text
 
-        print(status.created_at, status.favorite_count, status.retweet_count,
-              status.text, status.id, status.geo, status.lang, status.source, status.entities.get('hashtags'))
-        print('------------------------------------------')
+        producer = KafkaProducer()
+
+        try:        
+            producer.send('twitter-s', key=b'covid', value=status.text.encode('utf-8'))
+            print('Sent:', status.text)
+            time.sleep(1)
+        except KafkaTimeoutError:
+            print("Timeout: not possible to send the data.")
+        finally:
+            producer.close()
+
+
+        # print(status.created_at, status.favorite_count, status.retweet_count,
+        #       status.text, status.id, status.geo, status.lang, status.source, status.entities.get('hashtags'))
+        # print('------------------------------------------')
 
     def on_error(self, status_code):
         print("Encountered streaming error (", status_code, ")")

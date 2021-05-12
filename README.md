@@ -25,8 +25,19 @@ In manual_ingestion directory there are the notebook to get the data from tweets
 - **Elasticsearch:** [http://localhost:9200](http://localhost:9200)
 - **Kibana:** [http://localhost:5601](http://localhost:5601)
 
+
+## Jars
+
+If you need to execute manually you can use this set up
+
+kafka version        : kafka_2.11-2.4.0
+java version         : 1.8
+apache spark version : 2.4.7 hadoop 2.7
+
 ## Create Env
 
 `conda create --name myenv`
+
+## Config Jupyter and PySpark
 
 Jupyter and PySpark: https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes

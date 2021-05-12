@@ -1,5 +1,4 @@
 from kafka import KafkaProducer
-import pandas as pd
 import csv
 import time
 import json
